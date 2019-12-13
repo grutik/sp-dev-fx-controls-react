@@ -91,7 +91,7 @@ export default class SPTermStorePickerService {
       return this.context.spHttpClient.post(this.clientServiceUrl, SPHttpClient.configurations.v1, httpPostOptions).then((serviceResponse: SPHttpClientResponse) => {
         return serviceResponse.json().then((serviceJSONResponse: any) => {
           // Construct results
-          let termStoreResult: ITermStore[] = serviceJSONResponse.filter((r: { [x: string]: string; }) => r['_ObjectType_'] === 'SP.Taxonomy.TermStore');
+          let termStoreResult: ITermStore[] = serviceJSONResponse.filter((r: { [x: string]: string; }) => !!r && r['_ObjectType_'] === 'SP.Taxonomy.TermStore');
           // Check if term store was retrieved
           if (termStoreResult.length > 0) {
             // Check if the termstore needs to be filtered or limited
