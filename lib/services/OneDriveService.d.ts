@@ -1,13 +1,13 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { FileBrowserService } from "./FileBrowserService";
 import { FilesQueryResult } from "./FileBrowserService.types";
-import { ApplicationCustomizerContext } from "@microsoft/sp-application-base";
+import { ExtensionContext } from "@microsoft/sp-extension-base";
 export declare class OneDriveService extends FileBrowserService {
     protected oneDrivePersonalUrl: string;
     protected oneDriveRootFolderRelativeUrl: string;
     protected oneDriveRootFolderAbsoluteUrl: string;
     protected oneDrivePersonalLibraryTitle: string;
-    constructor(context: ApplicationCustomizerContext | WebPartContext, itemsToDownloadCount?: number);
+    constructor(context: ExtensionContext | WebPartContext, itemsToDownloadCount?: number);
     /**
      * Gets files from OneDrive personal library
      */

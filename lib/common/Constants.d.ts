@@ -36,3 +36,4 @@ export declare const FieldNamesMapping: {
  * Invariant Culture
  */
 export declare const InvariantCulture: ICultureInfo;
+export declare const EmptyGuid: string;

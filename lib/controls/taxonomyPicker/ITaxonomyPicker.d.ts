@@ -1,9 +1,9 @@
-import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
 import { IPickerTerms } from './ITermPicker';
 import { ITermSet, ITerm } from '../../services/ISPTermStorePickerService';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import { ITermActions } from './termActions/ITermsActions';
 import SPTermStorePickerService from '../../services/SPTermStorePickerService';
+import { ExtensionContext } from '@microsoft/sp-extension-base';
 /**
  * PropertyFieldTermPickerHost properties interface
 //  */
@@ -27,7 +27,7 @@ export interface ITaxonomyPickerProps {
     /**
      * WebPart's context
      */
-    context: IWebPartContext | ApplicationCustomizerContext;
+    context: IWebPartContext | ExtensionContext;
     /**
      * Limit the terms that can be picked by the Term Set name or ID
      */
@@ -61,7 +61,24 @@ export interface ITaxonomyPickerProps {
      */
     termActions?: ITermActions;
     /**
+     * Specifies if the tags marked with 'Available for tagging' = false should be hidden
+     */
+    hideTagsNotAvailableForTagging?: boolean;
+    /**
+     * Specifies if deprecated tags  should be hidden
+     */
+    hideDeprecatedTags?: boolean;
+    /**
+     * Placeholder to be displayed in an empty term picker
+     */
+    placeholder?: string;
+    /**
+     * Specifies if the initial values will be validated, when the component is loaded
+     */
+    validateOnLoad?: boolean;
+    /**
      * The method is used to get the validation error message and determine whether the input value is valid or not.
+     * Mutually exclusive with the static string errorMessage (it will take precedence over this).
      *
      *   When it returns string:
      *   - If valid, it returns empty string.
@@ -75,9 +92,18 @@ export interface ITaxonomyPickerProps {
      */
     onGetErrorMessage?: (value: IPickerTerms) => string | Promise<string>;
     /**
+     * Static error message displayed below the text field. Use onGetErrorMessage to dynamically change the error message displayed (if any) based on the current value. errorMessage and onGetErrorMessage are mutually exclusive (errorMessage takes precedence).
+     */
+    errorMessage?: string;
+    /**
      * onChange Event
      */
     onChange?: (newValue?: IPickerTerms) => void;
+    /**
+     * Specifies if to display an asterisk near the label.
+     * Note that error message should be specified in onGetErrorMessage
+     */
+    required?: boolean;
 }
 /**
  * PropertyFieldTermPickerHost state interface
@@ -85,9 +111,14 @@ export interface ITaxonomyPickerProps {
 export interface ITaxonomyPickerState {
     termSetAndTerms?: ITermSet;
     errorMessage?: string;
+    /**
+     * Error message populated in the component. errorMessage takes precedence over this.
+     */
+    internalErrorMessage?: string;
     openPanel?: boolean;
     loaded?: boolean;
     activeNodes?: IPickerTerms;
+    invalidNodeIds?: string[];
 }
 export interface ITermChanges {
     changedCallback: (term: ITerm, checked: boolean) => void;
@@ -122,4 +153,6 @@ export interface ITermProps extends ITermChanges {
 export interface ITermState {
     selected?: boolean;
     termLabel: string;
+    hidden?: boolean;
+    disabled?: boolean;
 }

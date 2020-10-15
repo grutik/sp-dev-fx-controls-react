@@ -69,6 +69,7 @@ export declare class IFrameDialog extends React.Component<IFrameDialogProps, IFr
      * componentDidMount lifecycle hook
      */
     componentDidMount(): void;
+    componentWillReceiveProps(nextProps: IFrameDialogProps): void;
     componentDidUpdate(prevProps: IFrameDialogProps, prevState: IFrameDialogState): void;
     render(): JSX.Element;
     /**

@@ -14,7 +14,18 @@ export default class SPService implements ISPService {
     /**
      * Get List Items
      */
-    getListItems(filterText: string, listId: string, internalColumnName: string, keyInternalColumnName?: string, webUrl?: string): Promise<any[]>;
+    getListItems(filterText: string, listId: string, internalColumnName: string, keyInternalColumnName?: string, webUrl?: string, filter?: string, substringSearch?: boolean): Promise<any[]>;
+    /**
+  * Gets list items for list item picker
+  * @param filterText
+  * @param listId
+  * @param internalColumnName
+  * @param [keyInternalColumnName]
+  * @param [webUrl]
+  * @param [filterList]
+  * @returns list items for list item picker
+  */
+    getListItemsForListItemPicker(filterText: string, listId: string, internalColumnName: string, keyInternalColumnName?: string, webUrl?: string, filterList?: string): Promise<any[]>;
     /**
      * Get list item attachments
      *

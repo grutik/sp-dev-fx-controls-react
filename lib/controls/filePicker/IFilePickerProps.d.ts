@@ -1,6 +1,6 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { IFilePickerResult } from "./FilePicker.types";
-import { ApplicationCustomizerContext } from "@microsoft/sp-application-base";
+import { ExtensionContext } from "@microsoft/sp-extension-base";
 export interface IFilePickerProps {
     /**
      * Specifies the text describing the file picker
@@ -25,7 +25,15 @@ export interface IFilePickerProps {
     /**
      * Current context.
      */
-    context: ApplicationCustomizerContext | WebPartContext;
+    context: ExtensionContext | WebPartContext;
+    /**
+     * ClassName to be applied to the opener button element.
+     */
+    buttonClassName?: string;
+    /**
+     * ClassName to be applied to the Panel root element.
+     */
+    panelClassName?: string;
     /**
      * File extensions to be displayed.
      */
@@ -51,6 +59,10 @@ export interface IFilePickerProps {
      */
     hideRecentTab?: boolean;
     /**
+     * Specifies if StockImagesTab should be hidden.
+     */
+    hideStockImages?: boolean;
+    /**
      * Specifies if WebSearchTab should be hidden.
      */
     hideWebSearchTab?: boolean;
@@ -74,4 +86,10 @@ export interface IFilePickerProps {
      * Specifies if LinkUploadTab should be hidden.
      */
     hideLinkUploadTab?: boolean;
+    /**
+     * Specifies if last active tab will be stored after the Upload panel has been closed.
+     * Note: the value of selected tab is stored in the queryString hash.
+     * @default true
+     */
+    storeLastActiveTab?: boolean;
 }

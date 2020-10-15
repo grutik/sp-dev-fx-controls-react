@@ -23,6 +23,10 @@ export default class ButtonTermAction extends React.Component<IConcreteTermActio
      */
     private onActionExecute;
     /**
+     * Render all the term actions
+     */
+    private renderTermActions();
+    /**
      * Default React render method
      */
     render(): React.ReactElement<IConcreteTermActionProps>;

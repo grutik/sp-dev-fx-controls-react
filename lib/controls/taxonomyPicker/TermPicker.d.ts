@@ -4,7 +4,7 @@ import { BasePicker, IBasePickerProps, IPickerItemProps } from 'office-ui-fabric
 import { IPickerTerm, IPickerTerms } from './ITermPicker';
 import { ITaxonomyPickerProps } from './ITaxonomyPicker';
 import { IWebPartContext } from '@microsoft/sp-webpart-base';
-import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
+import { ExtensionContext } from '@microsoft/sp-extension-base';
 export declare class TermBasePicker extends BasePicker<IPickerTerm, IBasePickerProps<IPickerTerm>> {
 }
 export interface ITermPickerState {
@@ -12,17 +12,19 @@ export interface ITermPickerState {
 }
 export interface ITermPickerProps {
     termPickerHostProps: ITaxonomyPickerProps;
-    context: IWebPartContext | ApplicationCustomizerContext;
+    context: IWebPartContext | ExtensionContext;
     disabled: boolean;
     value: IPickerTerms;
     allowMultipleSelections: boolean;
     isTermSetSelectable?: boolean;
     disabledTermIds?: string[];
     disableChildrenOfDisabledParents?: boolean;
+    placeholder?: string;
     onChanged: (items: IPickerTerm[]) => void;
 }
 export default class TermPicker extends React.Component<ITermPickerProps, ITermPickerState> {
     private allTerms;
+    private termsService;
     /**
      * Constructor method
      */

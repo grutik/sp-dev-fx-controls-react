@@ -9,7 +9,6 @@ export declare class Map extends React.Component<IMapProps, IMapState> {
     /**
      * componentWillMount lifecycle hook
      */
-    componentWillMount(): void;
     /**
      * componentWillUpdate lifecycle hook
      */
@@ -35,7 +34,17 @@ export declare class Map extends React.Component<IMapProps, IMapState> {
     */
     private _getMapUrl();
     /**
-     * Get coordinates using the Bing API
+     * Gets map url for a static Bing map
+     *
+     * @private
+     * @param {(string | number)} width
+     * @param {(string | number)} height
+     * @returns {string}
+     * @memberof Map
+     */
+    private _getBingMapUrl(width, height);
+    /**
+     * Get coordinates using the OpenStreetMap nominatim API
      */
     private _getCoordinates;
     /**

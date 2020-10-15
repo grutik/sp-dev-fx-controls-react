@@ -12,6 +12,11 @@ export default class TermActionsControl extends React.Component<ITermActionsCont
      */
     private getAvailableActions();
     /**
+     * Sets the visibility of a certain action
+     * @param isHidden
+     */
+    private setActionStateForTerm;
+    /**
      * Default React render method
      */
     render(): React.ReactElement<ITermActionsControlProps>;

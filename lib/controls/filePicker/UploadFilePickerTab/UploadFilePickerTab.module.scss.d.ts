@@ -39,6 +39,7 @@ declare const styles: {
     emptyFolderIcon: string;
     localTabSinglePreview: string;
     localTabSinglePreviewImage: string;
+    localTabFilename: string;
     localTabLabel: string;
     localTabInput: string;
 };

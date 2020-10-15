@@ -75,6 +75,7 @@ export declare class FieldUserRenderer extends React.Component<IFieldUserRendere
     private _userUrlTemplate;
     private _userImageUrl;
     constructor(props: IFieldUserRendererProps, state: IFieldUserRendererState);
+    componentWillReceiveProps(nextProps: IFieldUserRendererProps): void;
     render(): JSX.Element;
     /**
      * Renders compact part of user Hover Card

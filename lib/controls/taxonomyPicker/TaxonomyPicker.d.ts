@@ -21,13 +21,21 @@ export declare class TaxonomyPicker extends React.Component<ITaxonomyPickerProps
      */
     constructor(props: ITaxonomyPickerProps);
     /**
+     * componentDidMount lifecycle hook
+     */
+    componentDidMount(): void;
+    /**
      * componentWillMount lifecycle hook
      */
     componentWillMount(): void;
     /**
      * componentWillUpdate lifecycle hook
      */
-    componentDidUpdate(prevProps: ITaxonomyPickerProps): void;
+    componentDidUpdate(prevProps: ITaxonomyPickerProps): Promise<void>;
+    /**
+    * it checks, if all entries still exist in term store. if allowMultipleSelections is true. it have to validate all values
+    */
+    private validateTerms();
     /**
      * Loads the list from SharePoint current web site
      */
@@ -69,6 +77,8 @@ export declare class TaxonomyPicker extends React.Component<ITaxonomyPickerProps
      * @param isChecked
      */
     private termSetSelectedChange;
+    private validate;
+    private validated;
     /**
      * Renders the SPListpicker controls with Office UI  Fabric
      */

@@ -1,13 +1,13 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { IFile, FilesQueryResult, ILibrary } from "./FileBrowserService.types";
-import { ApplicationCustomizerContext } from "@microsoft/sp-application-base";
+import { ExtensionContext } from "@microsoft/sp-extension-base";
 export declare class FileBrowserService {
     protected itemsToDownloadCount: number;
-    protected context: ApplicationCustomizerContext | WebPartContext;
+    protected context: ExtensionContext | WebPartContext;
     protected driveAccessToken: string;
     protected mediaBaseUrl: string;
     protected callerStack: string;
-    constructor(context: ApplicationCustomizerContext | WebPartContext, itemsToDownloadCount?: number);
+    constructor(context: ExtensionContext | WebPartContext, itemsToDownloadCount?: number);
     /**
      * Gets files from current sites library
      * @param libraryName

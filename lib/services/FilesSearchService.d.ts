@@ -1,10 +1,10 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { ISearchResult, BingQuerySearchParams, IRecentFile } from "./FilesSearchService.types";
-import { ApplicationCustomizerContext } from "@microsoft/sp-application-base";
+import { ExtensionContext } from "@microsoft/sp-extension-base";
 export declare class FilesSearchService {
     private context;
     private bingAPIKey;
-    constructor(context: ApplicationCustomizerContext | WebPartContext, bingAPIKey: string);
+    constructor(context: ExtensionContext | WebPartContext, bingAPIKey: string);
     /**
      * Checks if file exists
      */

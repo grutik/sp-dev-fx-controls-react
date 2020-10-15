@@ -2,13 +2,18 @@
 import * as React from "react";
 import { ICarouselProps, ICarouselState } from ".";
 export declare class Carousel extends React.Component<ICarouselProps, ICarouselState> {
+    private _intervalId;
     constructor(props: ICarouselProps);
     /**
      * Handles component update lifecycle method.
      * @param prevProps
      */
     componentDidUpdate(prevProps: ICarouselProps): void;
+    componentDidMount(): void;
     render(): React.ReactElement<ICarouselProps>;
+    private renderSlide;
+    private getIndicatorsElement;
+    private onIndicatorClick;
     /**
      * Return merged styles for Button containers.
      */
@@ -38,4 +43,7 @@ export declare class Carousel extends React.Component<ICarouselProps, ICarouselS
      * Returns current element to be displayed.
      */
     private getElementToDisplay;
+    private startCycle;
+    private moveNext;
+    private pauseCycle;
 }

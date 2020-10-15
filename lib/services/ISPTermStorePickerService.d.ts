@@ -67,7 +67,17 @@ export interface ITerm {
     CustomSortOrderIndex?: number;
     PathDepth?: number;
     ParentId?: string;
+    TermsCount?: number;
     LocalCustomProperties?: {
         [property: string]: any;
     };
+}
+export interface ISuggestTerm {
+    Id: string;
+    DefaultLabel: string;
+    Description: string;
+    IsKeyword: boolean;
+    IsSynonym: boolean;
+    Paths: Array<string>;
+    Synonyms: string;
 }

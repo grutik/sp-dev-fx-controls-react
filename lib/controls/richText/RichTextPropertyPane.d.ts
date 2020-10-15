@@ -63,6 +63,10 @@ export default class RichTextPropertyPane extends React.Component<IRichTextPrope
      */
     private onChangeHeading;
     /**
+     * On indentation change.
+     */
+    private onChangeIndent;
+    /**
      * On size change
      */
     private onChangeSize;

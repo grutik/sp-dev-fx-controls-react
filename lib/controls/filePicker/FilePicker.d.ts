@@ -34,4 +34,5 @@ export declare class FilePicker extends React.Component<IFilePickerProps, IFileP
      * Prepares navigation panel options
      */
     private _getNavPanelOptions;
+    private getDefaultSelectedTabKey;
 }

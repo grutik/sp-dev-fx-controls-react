@@ -8,5 +8,6 @@ declare const styles: {
     siteBreadcrumb: string;
     carouselContent: string;
     carouselButtonsContainer: string;
+    carouselImageContent: string;
 };
 export default styles;

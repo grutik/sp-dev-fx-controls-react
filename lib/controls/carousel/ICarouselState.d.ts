@@ -11,4 +11,6 @@ export interface ICarouselState {
      * Specifies internal state of the control.
      */
     processingState: ProcessingState;
+    slideRight?: boolean;
+    previousIndex?: number;
 }

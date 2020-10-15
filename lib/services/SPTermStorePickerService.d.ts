@@ -2,7 +2,7 @@ import { IWebPartContext } from '@microsoft/sp-webpart-base';
 import { ITaxonomyPickerProps } from '../controls/taxonomyPicker/ITaxonomyPicker';
 import { IPickerTerm } from '../controls/taxonomyPicker/ITermPicker';
 import { ITermStore, ITermSet } from './ISPTermStorePickerService';
-import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
+import { ExtensionContext } from '@microsoft/sp-extension-base';
 /**
  * Service implementation to manage term stores in SharePoint
  */
@@ -12,10 +12,11 @@ export default class SPTermStorePickerService {
     private taxonomySession;
     private formDigest;
     private clientServiceUrl;
+    private suggestionServiceUrl;
     /**
      * Service constructor
      */
-    constructor(props: ITaxonomyPickerProps, context: IWebPartContext | ApplicationCustomizerContext);
+    constructor(props: ITaxonomyPickerProps, context: IWebPartContext | ExtensionContext);
     getTermLabels(termId: string): Promise<string[]>;
     /**
      * Gets the collection of term stores in the current SharePoint env
@@ -29,7 +30,7 @@ export default class SPTermStorePickerService {
      * Retrieve all terms for the given term set
      * @param termset
      */
-    getAllTerms(termset: string): Promise<ITermSet>;
+    getAllTerms(termset: string, hideDeprecatedTags?: boolean, hideTagsNotAvailableForTagging?: boolean): Promise<ITermSet>;
     /**
      * Get the term set ID by its name
      * @param termstore
@@ -41,12 +42,19 @@ export default class SPTermStorePickerService {
      * @param searchText
      */
     searchTermsByName(searchText: string): Promise<IPickerTerm[]>;
+    private getTermsById(termId);
+    private searchTermsBySearchText(terms, searchText);
+    searchTermsByTermId(searchText: string, termId: string): Promise<IPickerTerm[]>;
+    /**
+     * Retrieve all terms for the given term set and anchorId
+     */
+    getAllTermsByAnchorId(termsetNameOrID: string, anchorId: string, hideDeprecatedTags?: boolean, hideTagsNotAvailableForTagging?: boolean): Promise<IPickerTerm[]>;
     /**
        * Searches terms for the given term set
        * @param searchText
        * @param termsetId
        */
-    private searchTermsByTermSet(searchText, termSet);
+    private searchTermsByTermSet(searchText);
     private isGuid(strGuid);
     /**
      * Sorting terms based on their path and depth
@@ -74,4 +82,10 @@ export default class SPTermStorePickerService {
      * Returns 3 fake SharePoint lists for the Mock mode
      */
     private getAllMockTerms();
+    /**
+     * Returns 3 fake SharePoint lists for the Mock mode
+     */
+    private getAllMockTermsByAnchor();
+    private convertTermToPickerTerm(term);
+    private convertSuggestTermToPickerTerm(term);
 }

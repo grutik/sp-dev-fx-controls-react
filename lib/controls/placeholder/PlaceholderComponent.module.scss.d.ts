@@ -8,7 +8,5 @@ declare const styles: {
     hide: string;
     placeholderDescription: string;
     placeholderDescriptionText: string;
-    placeholderOverlay: string;
-    placeholderSpinnerContainer: string;
 };
 export default styles;

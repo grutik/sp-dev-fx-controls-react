@@ -1,13 +1,13 @@
-import { ApplicationCustomizerContext } from '@microsoft/sp-application-base';
-import { FieldCustomizerContext, ListViewCommandSetContext } from '@microsoft/sp-listview-extensibility';
+/// <reference types="react" />
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { SPPermission } from '@microsoft/sp-page-context';
 import { PermissionLevel } from '.';
+import { ExtensionContext } from '@microsoft/sp-extension-base';
 export interface ISecurityTrimmedControlProps {
     /**
      * Context of the web part, application customizer, field customizer, or list view command set.
      */
-    context: WebPartContext | ApplicationCustomizerContext | FieldCustomizerContext | ListViewCommandSetContext;
+    context: WebPartContext | ExtensionContext;
     /**
      * The permissions to check for the user.
      */
@@ -36,4 +36,12 @@ export interface ISecurityTrimmedControlProps {
      * Optional. Specify the className to be used on the parent element.
      */
     className?: string;
+    /**
+     * Optional. Specify the control you want to render if user doesn't have permissions
+     */
+    noPermissionsControl?: JSX.Element;
+    /**
+     * Optional. Specify should render loading animation
+     */
+    showLoadingAnimation?: boolean;
 }

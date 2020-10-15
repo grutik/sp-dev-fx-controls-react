@@ -17,6 +17,7 @@ export declare class PeoplePicker extends React.Component<IPeoplePickerProps, IP
      * componentWillUpdate lifecycle hook
      */
     componentWillUpdate(nextProps: IPeoplePickerProps, nextState: IPeoplePickerState): void;
+    componentWillReceiveProps(nextProps: IPeoplePickerProps): void;
     /**
      * Get initial persons
      */

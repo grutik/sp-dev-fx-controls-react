@@ -11,6 +11,8 @@ export default class ControlsTest extends React.Component<IControlsTestProps, IC
      * Static array for carousel control example.
      */
     private carouselElements;
+    private skypeCheckIcon;
+    private treeitems;
     constructor(props: IControlsTestProps);
     /**
      * React componentDidMount lifecycle hook
@@ -37,7 +39,7 @@ export default class ControlsTest extends React.Component<IControlsTestProps, IC
      * @param {IPickerTerms} terms
      * @memberof ControlsTest
      */
-    private onServicePickerChange(terms);
+    private onServicePickerChange;
     /**
      * Method that retrieves the selected terms from the taxonomy picker
      * @param terms
@@ -73,9 +75,15 @@ export default class ControlsTest extends React.Component<IControlsTestProps, IC
      */
     private triggerNextElement;
     private _onFilePickerSave;
+    private _onFolderSelect;
     private _onRenderGridItem;
     /**
      * Renders the component
      */
     render(): React.ReactElement<IControlsTestProps>;
+    private getRandomCollectionFieldData;
+    private onExpandCollapseTree(item, isExpanded);
+    private onItemSelected(items);
+    private renderCustomTreeItem(item);
+    private _getPage(page);
 }

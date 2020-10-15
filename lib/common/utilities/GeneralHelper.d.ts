@@ -43,6 +43,11 @@ export declare class GeneralHelper {
      * @param url
      */
     static getAbsoluteDomainUrl(url: string): string;
+    /**
+     * To support IE11 that has no support for File constructor
+     * @param blob
+     */
+    static getFileFromBlob(blob: Blob, fileName: string): File;
     static formatBytes(bytes: any, decimals: any): string;
     /**
      * Returns file name without extension.

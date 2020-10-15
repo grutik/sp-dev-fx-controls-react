@@ -7,6 +7,14 @@ export interface ICoordinates {
      * Longitude of the map to display
     */
     longitude: number;
+    /**
+     * Display Name of the location
+     */
+    displayName?: string;
+    /**
+     * Address of the location
+     */
+    address?: any;
 }
 export declare enum MapType {
     standard = "mapnik",
@@ -27,4 +35,5 @@ export interface LocationInfo {
     type: string;
     importance: number;
     icon: string;
+    address?: any;
 }
